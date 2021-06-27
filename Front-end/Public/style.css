@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+}
+
+.image {
+    background-color:  rgb(243, 233, 241);
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+}
+
+.espace {
+    padding-top: 20px;
+}
+
+.produit {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.titre {
+    text-align: center;
+}
+
+/* header {
+    background-color: rgb(17, 224, 224);
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+} */
+
+header, .rose {
+    background-color: rgb(243, 233, 241);
+}
+
+.panier {
+    background-color: hotpink;
+}
+
+footer {
+    background-color: rgb(243, 233, 241);
+    width: 100%;
+    height: 100%;
+}
+
+/* Produit */
+ .prod {
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+
+.blue span strong {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+/* Panier */
+nav ul li a {
+    color: black;
+}
+
+.color {
+    margin-top:  15px;
+    font-size: 1.3em;
+    background-color: cadetblue;
+    color: black;
+}
+
+.center h1, h2 {
+    text-align: center;
+    padding: 5px;
+    background-color: yellow;
+}
+
+/* Bouton */
+.val a, .detail a {
+    text-decoration: none;
+    color: white;
+}
+
+.val a:hover, .detail a:hover {
+    color: white;
+}
+
+
+button .fa-info-circle, .fa-shopping-cart {
+    padding-right: 7px;
+}
+
+/* h3 Accueil */
+h1, .card-body h3 {
+    color: rgb(151, 25, 151);
+}
+
+h2 {
+    color: grey;
+}
+
+/* Redirection accueil */
+.card-body a {
+    text-decoration: none;
+}
+
+/* Fiche produit */
+.quantite, .option {
+    margin-top: 10px;
+}
+
+/* Confirmation */
+.commande h1 {
+    font-size: 1.8em;
+    padding: 10px;
+}
+
+.pink, .merci {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pink h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.pink h3 {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.pink p {
+    width: 78%;
+    text-align: center;
+}
+
+.recap {
+    font-weight: bold;
+}

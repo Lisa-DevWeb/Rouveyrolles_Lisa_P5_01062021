@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/e30966b87e.js" crossorigin="anonymous"></script>
+    <title>Formulaire</title>
+</head>
+<body>
+
+     <!-- Header -->
+     <header>
+      <nav class="navbar navbar-expand-lg  py-3 bgc ">
+          <div class="container"><a href="#" class="navbar-brand text-uppercase font-weight-bold">
+            <img class="img mx-lg-0 mr-auto navbar-brand" src="../logo.png"  width="200" alt="logo orinoco"/>
+          </a>
+              <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+
+              <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"> <a class="nav-link font-weight-bold text-uppercase color" aria-current="page" href="../index.html">Accueil</a> </li>
+                     <li class="nav-item"> <a class="nav-link font-weight-bold text-uppercase color"  aria-current="page" href="./cart.html"id="basketPreview">Panier</a> </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+  </header>
+  <!-- Fin Header -->
+
+    <!-- Contenu Panier -->
+    <section>
+      <div class="container container-fluid color">
+        <div class="row">
+          <div class="col">
+
+            <div class="row quatre card-body">
+<h1>Votre panier</h1>
+              <div class="col blue col-sm-5">
+                <div class="image container-fluid">
+                  <!-- <img src="" class="img-fluid" alt="Responsive image"> -->
+                </div>
+              </div>
+
+                <div class="col col-sm-4">
+                  <h2>Caméra vintage</h2>
+                  <p>Reflex</p>
+
+                  <div>
+                    <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
+                        class="fas fa-trash-alt mr-1"></i> Retirer le produit </a>
+                    <!-- <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
+                        class="fas fa-heart mr-1"></i> Move to wish list </a> -->
+                  </div>
+                </div>
+
+                <div class="col">
+                  <tbody>
+                    <tr>
+                      <td class="pl-0 pb-0 w-25">Quantité</td>
+                    </tr>
+        
+                    <tr>
+                      <td data-th="Quantity">
+                          <input type="number" class="form-control text-center" value="1">
+                      </td>
+                  </tbody>
+                </div>
+          </div>
+
+          <hr class="mb-4">
+          </div>
+        </div>
+        <!-- Fin premier tableau -->
+      </div>
+<!-- fin conteneur panier -->
+</section>
+<!-- Formulaire -->
+
+<section class="container-fluid justify-align-center">
+  <div class="container container-fluid color">
+    <div class="row">
+      <div class="col ye">
+
+        <div class="row quatre">
+<!-- Formulaire -->
+          <div class="col blue">
+            <div class="row">
+
+                        <!-- Card -->
+                        <div class="card wish-list pb-1">
+                          <div class="card-body">
+
+                            <h5 class="mb-2">Veuillez renseigner les champs suivants</h5>
+
+                            <!-- Grid row -->
+                            <div class="row">
+
+                              <!-- Grid column -->
+                              <div class="col-lg-6">
+
+                                <!-- First name -->
+                                <div class="md-form md-outline mb-0 mb-lg-4">
+                                  <label for="firstName">Nom</label>
+                                  <input type="text" id="firstName" class="form-control mb-0 mb-lg-2">
+                                </div>
+
+                              </div>
+                              <!-- Grid column -->
+
+                              <!-- Grid column -->
+                              <div class="col-lg-6">
+
+                                <!-- Last name -->
+                                <div class="md-form md-outline">
+                                  <label for="lastName">Prénom</label>
+                                  <input type="text" id="lastName" class="form-control">
+                                </div>
+
+                              </div>
+                              <!-- Grid column -->
+
+                            </div>
+                            <!-- Grid row -->
+
+                            <!-- Country -->
+                            <div class="d-flex flex-wrap">
+                              <div class="select-outline position-relative w-100">
+                                <select class="mdb-select md-form md-outline">
+                                  <option value="" disabled selected>Choisissez une option</option>
+                                  <option value="1">Option 1</option>
+                                  <option value="2">Option 2</option>
+                                  <option value="3">Option 3</option>
+                                </select>
+                                <label>Pays</label>
+                              </div>
+                              <hr>
+                            </div>
+
+                            <!-- Address Part 1 -->
+                            <div class="md-form md-outline mt-0">
+                              <label for="form14">Addresse</label>
+                              <input type="text" id="form14" placeholder="Numero et nom de la rue" class="form-control">
+                            </div>
+
+
+                            <!-- Postcode / ZIP -->
+                            <div class="md-form md-outline">
+                              <label for="form16">Code postale</label>
+                              <input type="text" id="form16" class="form-control">
+                            </div>
+
+                            <!-- Town / City -->
+                            <div class="md-form md-outline">
+                              <label for="form17">Ville</label>
+                              <input type="text" id="form17" class="form-control">
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="md-form md-outline">
+                              <label for="form18">Numéro de telephone</label>
+                              <input type="number" id="form18" class="form-control">
+                            </div>
+
+                           <!-- Email address -->
+                            <div class="md-form md-outline">
+                              <label for="form19">E-mail</label>
+                              <input type="email" id="form19" class="form-control">
+                            </div>
+
+
+                          </div>
+                        </div>
+                        <!-- Card -->
+            </div>
+          </div>
+          <!-- Fin formulaire -->
+
+      <div class="col col-sm-5">
+
+        <!-- Card -->
+            <div class="card mb-4">
+              <div class="card-body">
+
+                <h5 class="mb-3">Récapitulatif de votre commande</h5>
+
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                    Montant total
+                    <span>899,95 €</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                    Frais de port
+                    <span>Gratuit</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                    <div>
+                      <strong>Total TTC à payer</strong>
+                    </div>
+                    <span><strong>899,95 €</strong></span>
+                  </li>
+                </ul>
+
+                <button type="button" class="btn btn-success btn-block waves-effect waves-light val"><a href="../Pages/confirmation.html">Valider la commande</a></button>
+
+              </div>
+            </div>
+            <!-- Card -->
+
+          <!-- Card -->
+          <div class="card mb-4">
+            <div class="card-body">
+
+              <h5 class="mb-4">Nous acceptons</h5>
+      
+              <img class="mr-2" width="45px"
+                src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                alt="Visa">
+              <img class="mr-2" width="45px"
+                src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                alt="American Express">
+              <img class="mr-2" width="45px"
+                src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                alt="Mastercard">
+              <img class="mr-2" width="45px"
+                src="https://mdbootstrap.com/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
+                alt="PayPal acceptance mark">
+            </div>
+
+            </div>
+          </div>
+          <!-- Card -->
+              
+      </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class=" bgc page-footer font-small special-color-dark pt-3">
+        <div class="container">
+            <div class="text-center mt-3 mb-4">
+               <h3>Retrouvez nous sur :</h3>
+            </div>
+            <ul class="list-unstyled list-inline text-center redif">
+              <li class="list-inline-item">
+                <a class="btn-floating btn-fb mx-1">
+                  <i class="fab fa-facebook-f"> </i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-tw mx-1 size">
+                  <i class="fab fa-twitter"> </i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-gplus mx-1">
+                   <i class="fab fa-google-plus-g"> </i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-li mx-2">
+                  <i class="fab fa-linkedin-in"> </i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-dribbble mx-1">
+                  <i class="fab fa-dribbble"> </i>
+                </a>
+              </li>
+            </ul>
+          </div>
+ <!-- Copyright -->
+ <div class="text-center p-3 rose">
+    © 2021 Copyright | Orinoco
+  </div>
+  <!-- Copyright -->
+ </footer>   
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ 
+<script src="../JS/cart.js"></script>   
+</body>
+</html>
