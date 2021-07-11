@@ -3,8 +3,10 @@ body {
 }
 
 .image {
+    background-color:  rgb(243, 233, 241);
     width: 100%;
     height: 100%;
+    padding: 100px;
 }
 
 .espace {
@@ -20,6 +22,13 @@ body {
 .titre {
     text-align: center;
 }
+
+/* header {
+    background-color: rgb(17, 224, 224);
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+} */
 
 header, .rose {
     background-color: rgb(243, 233, 241);
@@ -41,7 +50,7 @@ footer {
     padding-top: 20px;
 }
 
-.blue span strong, .blue {
+.blue span strong {
     color: #0d6efd;
     text-decoration: none;
 }
@@ -54,24 +63,23 @@ nav ul li a {
 .color {
     margin-top:  15px;
     font-size: 1.3em;
+    background-color: cadetblue;
+    color: black;
 }
 
 .center h1, h2 {
     text-align: center;
     padding: 5px;
-}
-
-.titreh h2 {
-    text-align: initial;
+    background-color: yellow;
 }
 
 /* Bouton */
-.val a, .detail a, .btn a {
+.val a, .detail a {
     text-decoration: none;
     color: white;
 }
 
-.val a:hover, .detail a:hover, .btn a:hover {
+.val a:hover, .detail a:hover {
     color: white;
 }
 
@@ -81,7 +89,7 @@ button .fa-info-circle, .fa-shopping-cart {
 }
 
 /* h3 Accueil */
-h1, .card h2 {
+h1, .card-body h3 {
     color: rgb(151, 25, 151);
 }
 
@@ -130,30 +138,3 @@ h2 {
 .recap {
     font-weight: bold;
 }
-
-/* Index */
-#row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.nom {
-    font-size: 1.8em;
-}
-
-.optionn {
-    background-color: orange;
-}
-
-.strong {
-    font-weight: bold;
-}
-
-.select {
-    background-color: paleturquoise;
-}
-
-.big {
-    font-size: 1.3em;
-}
-

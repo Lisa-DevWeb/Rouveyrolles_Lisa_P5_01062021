@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <script src="https://kit.fontawesome.com/e30966b87e.js" crossorigin="anonymous"></script>
-    <title>Panier</title>
+    <title>Formulaire</title>
 </head>
 <body>
 
@@ -34,46 +34,44 @@
     <!-- Contenu Panier -->
     <section>
       <div class="container container-fluid color">
-        <div class="row" id="panier">
-          <div id="menu">
-                    <div class="col">
+        <div class="row">
+          <div class="col">
 
-                      <div class="row quatre card-body">
-                    <h1>Votre panier</h1>
-                        <div class="col blue col-sm-5">
-                          <div class="image container-fluid">
-                            <!-- <img src="" class="img-fluid" alt="Responsive image"> -->
-                          </div>
-                        </div>
+            <div class="row quatre card-body">
+<h1>Votre panier</h1>
+              <div class="col blue col-sm-5">
+                <div class="image container-fluid">
+                  <!-- <img src="" class="img-fluid" alt="Responsive image"> -->
+                </div>
+              </div>
 
-                          <div class="col col-sm-4 titreh">
-                            <h2>Caméra vintage</h2>
-                            <p>Reflex</p>
+                <div class="col col-sm-4">
+                  <h2>Caméra vintage</h2>
+                  <p>Reflex</p>
 
-                            <div>
-                              <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                                  class="fas fa-trash-alt mr-1"></i> Retirer le produit </a>
-                              <!-- <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
-                                  class="fas fa-heart mr-1"></i> Move to wish list </a> -->
-                            </div>
-                          </div>
+                  <div>
+                    <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
+                        class="fas fa-trash-alt mr-1"></i> Retirer le produit </a>
+                    <!-- <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
+                        class="fas fa-heart mr-1"></i> Move to wish list </a> -->
+                  </div>
+                </div>
 
-                          <div class="col">
-                            <tbody>
-                              <tr>
-                                <td class="pl-0 pb-0 w-25">Quantité</td>
-                              </tr>
-                  
-                              <tr>
-                                <td data-th="Quantity">
-                                    <input type="number" class="form-control text-center" value="1">
-                                </td>
-                            </tbody>
-                          </div>
-                    </div>
+                <div class="col">
+                  <tbody>
+                    <tr>
+                      <td class="pl-0 pb-0 w-25">Quantité</td>
+                    </tr>
+        
+                    <tr>
+                      <td data-th="Quantity">
+                          <input type="number" class="form-control text-center" value="1">
+                      </td>
+                  </tbody>
+                </div>
+          </div>
 
-                    <hr class="mb-4">
-                    </div>
+          <hr class="mb-4">
           </div>
         </div>
         <!-- Fin premier tableau -->
@@ -98,7 +96,6 @@
 
                             <h5 class="mb-2">Veuillez renseigner les champs suivants</h5>
 
-                            <h5 class="mb-2">Civilité</h5>
                             <!-- Grid row -->
                             <div class="row">
 
@@ -107,7 +104,7 @@
 
                                 <!-- First name -->
                                 <div class="md-form md-outline mb-0 mb-lg-4">
-                                  <label for="firstName">Nom :</label>
+                                  <label for="firstName">Nom</label>
                                   <input type="text" id="firstName" class="form-control mb-0 mb-lg-2">
                                 </div>
 
@@ -119,7 +116,7 @@
 
                                 <!-- Last name -->
                                 <div class="md-form md-outline">
-                                  <label for="lastName">Prénom :</label>
+                                  <label for="lastName">Prénom</label>
                                   <input type="text" id="lastName" class="form-control">
                                 </div>
 
@@ -127,27 +124,53 @@
                               <!-- Grid column -->
 
                             </div>
-
-                            <h5 class="mb-2">Coordonnées</h5>
                             <!-- Grid row -->
 
-                            <!-- Email address -->
-                            <div class="md-form md-outline">
-                              <label for="form19">E-mail :</label>
-                              <input type="email" id="form19" class="form-control">
+                            <!-- Country -->
+                            <div class="d-flex flex-wrap">
+                              <div class="select-outline position-relative w-100">
+                                <select class="mdb-select md-form md-outline">
+                                  <option value="" disabled selected>Choisissez une option</option>
+                                  <option value="1">Option 1</option>
+                                  <option value="2">Option 2</option>
+                                  <option value="3">Option 3</option>
+                                </select>
+                                <label>Pays</label>
+                              </div>
+                              <hr>
                             </div>
 
                             <!-- Address Part 1 -->
                             <div class="md-form md-outline mt-0">
-                              <label for="form14">Addresse :</label>
+                              <label for="form14">Addresse</label>
                               <input type="text" id="form14" placeholder="Numero et nom de la rue" class="form-control">
+                            </div>
+
+
+                            <!-- Postcode / ZIP -->
+                            <div class="md-form md-outline">
+                              <label for="form16">Code postale</label>
+                              <input type="text" id="form16" class="form-control">
                             </div>
 
                             <!-- Town / City -->
                             <div class="md-form md-outline">
-                              <label for="form17">Ville :</label>
+                              <label for="form17">Ville</label>
                               <input type="text" id="form17" class="form-control">
                             </div>
+
+                            <!-- Phone -->
+                            <div class="md-form md-outline">
+                              <label for="form18">Numéro de telephone</label>
+                              <input type="number" id="form18" class="form-control">
+                            </div>
+
+                           <!-- Email address -->
+                            <div class="md-form md-outline">
+                              <label for="form19">E-mail</label>
+                              <input type="email" id="form19" class="form-control">
+                            </div>
+
 
                           </div>
                         </div>
@@ -191,7 +214,7 @@
           <div class="card mb-4">
             <div class="card-body">
 
-              <h5 class="mb-4">Mode de paiement accepté</h5>
+              <h5 class="mb-4">Nous acceptons</h5>
       
               <img class="mr-2" width="45px"
                 src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
