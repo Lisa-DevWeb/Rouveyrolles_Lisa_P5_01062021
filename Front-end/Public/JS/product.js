@@ -9,14 +9,6 @@ const requestId = window.location.search; //Renvoie un objet Location contenant 
 const thisId = requestId.slice(1);//Sans modifier le tableau, renvoie une nouvelle copie des éléments du tableau
 console.log(thisId);
 
-//Creation du LocalStorage
-localStorage.setItem('nom', JSON.stringify(panier)) //Ajout d'un element à l'intérieur du stockage local et conversion de la valeur Javascript en chaîne JSON
-
-//Recuperation du LocalStorage sur l'autre page
-//JSON.parse(localStorage.getItem("nom")) //Conversion du format JSON au JS. Utilisation de localStorage.getItem afin de récupérer l'élément(nom) du stockage local
-//Pour simplifier la récupération, placer la methode dans une variable : panierLocalStor = localStorage.setItem('nom', JSON.stringify(panier)) ou 
-//var nom = JSON.parse(localStorage.getItem("nom"))
-var nom = JSON.parse(localStorage.getItem("nom"))
 //--------------------------------------------------------------
 
 //Recuperation des données API
@@ -47,7 +39,7 @@ function getArticles() {
     return data
   })
   .catch((error) => {
-    alert('Une erreur est survenue lors de la requête HTTP')
+    alert('Le serveur ne répond pas, veuillez réessayer ultérieurement.')
   })
 };
 
@@ -96,8 +88,10 @@ async function displayProduct (article, position) {
        let productQte = document.createElement('td');
        let productTdQte = document.createElement('div');
        let productBtnQte = document.createElement('button');
+       let productBtnI = document.createElement('i');
        let productInput = document.createElement('input');
        let productBtndeuxQte = document.createElement('button');
+       let productBtnIdeux = document.createElement('i');
       //Div selection
        let productSelect = document.createElement('select');
       //Bouton
@@ -121,11 +115,13 @@ async function displayProduct (article, position) {
       productTrUn.classList.add('col', 'col-6');
       productTrDeux.classList.add('col', 'col-6');
       productDivCol.classList.add('col', 'row');
-      productQte.classList.add('col', 'col-6', 'color', 'qte');//Quantité
-      productTdQte.classList.add('def-number-input', 'number-input', 'safari_only', 'mb-0', 'justify-content-center');
-      productBtnQte.classList.add('minus', 'm-2');
-      productInput.classList.add('w-25');
-      productBtndeuxQte.classList.add('plus', 'm-2');
+      productQte.classList.add('col', 'col-6', 'color', 'qte', 'row');//Quantité
+      productTdQte.classList.add('def-number-input', 'number-input', 'safari_only', 'row', 'col');
+      productBtnQte.classList.add('btn', 'btn-outline-secondary', 'col', 'col-2');
+      productBtnI.classList.add('bi', 'bi-plus');
+      productBtnIdeux.classList.add('bi', 'bi-dash', 'col', 'col-2');
+      productInput.classList.add('form-control', 'w-25');
+      productBtndeuxQte.classList.add('btn', 'btn-outline-secondary', 'col', 'col-2');
       productSelect.classList.add('form-select');
       //Bouton
       productDivBtn.classList.add('col', 'option', 'col-6', 'color');//Option
@@ -137,13 +133,11 @@ async function displayProduct (article, position) {
       productBtnDeux.setAttribute('type', 'submit');
       productBtnDeux.setAttribute('name', 'btn-envoyer');
       productBtnQte.setAttribute('type', 'button');
-      productBtnQte.setAttribute('type', 'number');
       productInput.setAttribute('min', '0');
       productInput.setAttribute('name', 'quantity');
       productInput.setAttribute('value', '1');
       productInput.setAttribute('type', 'number');
       productBtndeuxQte.setAttribute('type', 'button');
-      productBtndeuxQte.setAttribute('type', 'number');
       productBtnDeux.setAttribute('id', 'butn');
       productSelect.setAttribute('id', 'select');
 
@@ -171,6 +165,8 @@ async function displayProduct (article, position) {
       productQuantity.appendChild(productBtnDeux);
       productQte.appendChild(productTdQte);
       productTdQte.appendChild(productBtnQte);
+      productBtnQte.appendChild(productBtnI);
+      productBtndeuxQte.appendChild(productBtnIdeux);
       productTdQte.appendChild(productInput);
       productTdQte.appendChild(productBtndeuxQte);
       
@@ -185,6 +181,12 @@ async function displayProduct (article, position) {
       //Diviser les prix
       productPrice.innerHTML = article.price / 100 + ' €';
       productBtnDeux.innerHTML = `Ajouter au panier`;
+      productBtnI.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+    </svg> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>`;
+    productBtnIdeux.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
+  </svg> <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>`;
 
       //Texte
       productTrUn.innerHTML = `Quantité`;
@@ -212,10 +214,15 @@ async function displayProduct (article, position) {
         alert('Article ajouté au panier');
       }
 
+    
     } //Fin de la boucle if
   }
 
-  catch (e) {console.log(e)};
+  catch (error) {
+    console.error(error);
+    alert('Le serveur ne répond pas, veuillez réessayer ultérieurement.');
+  };
+  
 
 //Fonction ajout au panier, avec en paramètre l'id du produit
 
@@ -271,7 +278,10 @@ async function displayProduct (article, position) {
 
       } //Fin try
 
-      catch (e) {console.log(e)};
+      catch (error) {
+        console.error(error);
+        alert('Votre choix n\'a pas pu être rengistré, veuillez réessayer ultérieurement.');
+      };
 
     } //Fin de la function
 

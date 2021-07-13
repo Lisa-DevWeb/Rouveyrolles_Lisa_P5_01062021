@@ -157,3 +157,22 @@ h2 {
     font-size: 1.3em;
 }
 
+#image {
+   object-fit: cover;
+   width: auto;
+   height: 200px;
+}
+
+.taille {
+    text-align: center;
+}
+
+.titre {
+    padding: 10px;
+}
+
+.minuscule {
+    text-transform: none;
+}
+
+

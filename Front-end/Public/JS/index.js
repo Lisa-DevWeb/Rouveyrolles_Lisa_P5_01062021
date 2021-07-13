@@ -35,7 +35,7 @@ function getArticles() {
     return data
   })
   .catch((error) => {
-    alert('Une erreur est survenue lors de la requête HTTP')
+    alert('Le serveur ne répond pas, veuillez réessayer ultérieurement.')
   })
 };
 
