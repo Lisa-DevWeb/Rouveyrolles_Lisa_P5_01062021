@@ -6,7 +6,7 @@ addPanier() //Appel de la fonction
 
 //Fonction création des éléments sur la page panier
 
-function addPanier() {
+function addPanier(number) {
 
 try {
 
@@ -120,7 +120,7 @@ try {
 
             //Bouton de supression
             divBtn.setAttribute('id', panier[i]._id);
-            divBtn.setAttribute('onclick', 'remove("'+i+'")');
+            divBtn.setAttribute('onclick', 'remove("'+i+'")');//Apppel de la fonction remove() avec en parametre sa position dans le tableau
 
             //Prix total
             let prixTotal = 0;
@@ -173,3 +173,167 @@ function remove(position) {
 }//Fin function remove
 
 //Fonction de récupération de l'id des produits du panier :
+
+function idCart() {
+
+    try {
+
+        sessionStorage.removeItem('products');//Les données enregistrées dans la sessionStorage expirent a la fin de la session de la navigation actuelle. Suppression de la ressource avec le nom de clé correspondant du storage.
+        this.panier = []; 
+
+        //Si le localStorage du panier existe alors
+
+                if (localStorage.getItem('panier')) { //Si le localStorage du panier possède un élément, on récupère le panier dans le localStaorage s'il existe
+                    this.panier = JSON.parse(localStorage.getItem("panier"));  //Conversion du format JSON au JS. Utilisation de localStorage.getItem afin de récupérer l'élément(panier) du stockage local
+                }
+
+                //Si la sessionStorage products existe alors
+                if (JSON.parse(sessionStorage.getItem('products'))) {
+                    var products = JSON.parse(sessionStorage.getItem('products'))
+                }
+
+                else {
+                    products = []; //Sinon on initialise le tableau
+                }
+
+                    //Recuperation de l'id grâce à une boucle for
+                    for (h = 0; h < this.panier.length; h++) {
+                        
+                        console.log(this.panier[h]._id)
+                        var idProdu = this.panier[h]._id
+
+                        //Si l'id existe alors on push
+
+                        if (idProdu != null) {
+                            products.push(idProdu)
+                            sessionStorage.setItem('products', JSON.stringify(products))
+                        }
+
+                        //Sinon on initialise le tableau
+
+                        else {
+                            idProdu = [];
+                            products.push(idProdu)
+                            sessionStorage.setItem('products', JSON.stringify(products))
+                        }
+                    }
+    }
+
+    catch (error) {
+        console.error(error);
+        alert('Le serveur ne répond pas, veuillez réessayer ultérieurement.');
+      };
+
+};//Fin de la fonction IdCart
+
+idCart()
+
+//Au clic de sur le formulaire    
+let myForm = document.getElementById('myForm');
+myForm.addEventListener('submit', function (error) {
+
+    error.preventDefault()
+
+    var panier = JSON.parse(localStorage.getItem("panier"));
+    var erreur;
+
+    //Regex
+    let string = /[a-zA-Z]/;
+    let number = /[0-9]/;
+    let mail =  /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/y;
+    let specialCara = /[§!@#$%^&*(),.?":{}|<>]/;
+
+    //Récupération de la value du formulaire
+    var nom = document.getElementById('formNom').value;
+    var prenom = document.getElementById('formPrenom').value;
+    var email = document.getElementById('formMail').value;
+    var adresse = document.getElementById('formAdresse').value;
+    var ville = document.getElementById('formVille').value;
+
+    //S'il y a une erreur avec ces conditions, annulation du comportement par défaut du bouton et afficahge du message de la var erreur
+
+    if (number.test(ville) == true || specialCara.test(ville) ==true || mail.test(ville) == true || ville == ''){
+        erreur = "* Veuillez renseigner une ville "
+        error.preventDefault()
+    }
+    if (specialCara.test(adresse) == true || adresse == ""){
+        erreur = "* Veuillez renseigner une adresse de livraison"
+        error.preventDefault()
+    }
+    if (mail.test(email) == false){
+        erreur = "* Votre adresse mail n'est pas valide.."
+        error.preventDefault()
+    }
+    if (number.test(prenom) == true || specialCara.test(prenom) == true || prenom == ''){
+        erreur = "* Veuillez renseigner votre prénom"
+        error.preventDefault()
+    }
+    if(number.test(nom) == true || specialCara.test(nom) == true || nom == ''){
+        erreur = "* Veuillez renseigner votre nom"
+        error.preventDefault()
+    }
+
+    //Si la taille du panier est supérieure à 1, on annule le comportement par fédaut du bouton et on affiche le message de la var erreur
+  
+    if (panier.length < 1) {
+        error.preventDefault()
+        erreur= "* Veuillez ajouter un article dans votre panier.."
+        document.getElementById('erreur').innerHTML = erreur;
+    }
+
+    if (erreur) {
+        error.preventDefault()
+        document.getElementById('erreur').innerHTML = erreur;
+    } 
+    
+    else {
+
+        // Sinon on crée un objet contact contenant les informations du client
+
+        contact = {
+        lastName : nom,
+        firstName : prenom,
+        address : adresse,
+        city : ville,
+        email : email
+        };
+
+        // On crée le sessionStorage du contact
+
+        let getIt = JSON.parse(sessionStorage.getItem('contact'));
+        getIt = [];
+        alert('Formulaire envoyé !');
+        console.log(contact);
+
+        // Ajout de l'objet product dans le sessionStorage et push dans le tableau product
+
+        sessionStorage.setItem('contact', JSON.stringify(contact));
+        getIt.push(contact);
+
+        // Création de la variable qui va récuperer l'id des produits du panier
+
+        products = JSON.parse(sessionStorage.getItem('products'));
+            
+        // Via la methode fetch, on POST les données à l'API contenant le products (idProduit) et l'objet contact
+        
+        fetch("http://localhost:3000/api/cameras/order", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ contact, products }),
+                })
+
+                .then((response) => response.json())
+
+                .then((data) => {
+                    
+                sessionStorage.setItem("order", JSON.stringify(data));
+                document.location.href = "confirmation.html";
+                })
+
+                .catch((erreur) => console.log("erreur : " + erreur));
+             }
+      
+}); //Fin de l'évènement
+
