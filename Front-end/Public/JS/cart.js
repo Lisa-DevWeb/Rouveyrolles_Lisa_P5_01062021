@@ -123,15 +123,22 @@ try {
             divBtn.setAttribute('onclick', 'remove("'+i+'")');//Apppel de la fonction remove() avec en parametre sa position dans le tableau
 
             //Prix total
+            
             let prixTotal = 0;
             JSON.parse(localStorage.getItem("panier")).forEach((panier)=>{
                 prixTotal += panier.price * panier.quantite / 100;
                });
 
+              sessionStorage.setItem('prixTotal', JSON.stringify(prixTotal));
+            // sessionStorage.setItem('prixTotal', JSON.stringify(priceTot));
+             
+             console.log(prixTotal)
+            //    sessionStorage.getItem('priceTotal', JSON.stringify(priceTot));
+
                document.getElementById('price').innerHTML = prixTotal + ' €';
                document.getElementById('price_prix').innerHTML = prixTotal + ' €';
- 
 
+ 
         }//Fin de la boucle for
 
     }//Fin de la boucle if
@@ -273,7 +280,7 @@ myForm.addEventListener('submit', function (error) {
         error.preventDefault()
     }
 
-    //Si la taille du panier est supérieure à 1, on annule le comportement par fédaut du bouton et on affiche le message de la var erreur
+    //Si la taille du panier est supérieure à 1, on annule le comportement par dédaut du bouton et on affiche le message de la var erreur
   
     if (panier.length < 1) {
         error.preventDefault()
