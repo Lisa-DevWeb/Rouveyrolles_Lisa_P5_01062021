@@ -79,19 +79,25 @@ async function displayProduct (article, position) {
 
        //Div quantite
        let productQuantity = document.createElement('div');
+       let productDivcontainer = document.createElement('div');
+       let productTableFisrt = document.createElement('table');
+       let productTbodyFirst = document.createElement('tbody');
+       let productTrQte = document.createElement('tr');
+       let productDiv = document.createElement('div');
+       let productBtn = document.createElement('button');
+       let productSpann = document.createElement('span');
+       let productBtndeux = document.createElement('button');
+
        let productTable = document.createElement('table');
        let productTbody = document.createElement('tbody');
-       let productTrUn = document.createElement('tr');
        let productTrDeux = document.createElement('tr');
        let productDivCol = document.createElement('div');
        let productTd = document.createElement('td');
-       let productQte = document.createElement('td');
        let productTdQte = document.createElement('div');
        let productBtnQte = document.createElement('button');
        let productBtnI = document.createElement('i');
        let productInput = document.createElement('input');
        let productBtndeuxQte = document.createElement('button');
-       let productBtnIdeux = document.createElement('i');
       //Div selection
        let productSelect = document.createElement('select');
       //Bouton
@@ -102,7 +108,7 @@ async function displayProduct (article, position) {
       productContainer.classList.add('row', 'justify-content-center', 'container-fluid');
       productDivImg.classList.add('col-sm-4', 'prod');
       productImage.classList.add('img-fluid');
-      productColCinq.classList.add('col-sm-5', 'card', 'm-3');
+      productColCinq.classList.add('col-sm-5', 'card', 'espace');
       productCardBody.classList.add('card-body');
       productFirstTitle.classList.add('nom')
       productPrice.classList.add('blue', 'strong', 'big');
@@ -110,26 +116,37 @@ async function displayProduct (article, position) {
       productDescription.classList.add('pt-1');
       //Div Quantite
       productQuantity.classList.add('col', 'quantite', 'container-fluid');
+      productDivcontainer.classList.add('contain', 'col', 'row');//ICI commence
+      productTableFisrt.classList.add('containe', 'row', 'd-flex', 'flex-row');
+      productDiv.classList.add('d-flex', 'flex-nowrap', 'espace')
+      // productTbodyFirst.classList.add('row', 'd-flex', 'flex-row');
+      productBtn.classList.add('btn', 'btn-secondary');
+      productBtndeux.classList.add('btn', 'btn-secondary');
+
       productTable.classList.add('table', 'table-sm', 'table-borderless');
       productTbody.classList.add('qte', 'col', 'row');
-      productTrUn.classList.add('col', 'col-6');
       productTrDeux.classList.add('col', 'col-6');
-      productDivCol.classList.add('col', 'row');
-      productQte.classList.add('col', 'col-6', 'color', 'qte', 'row');//Quantité
-      productTdQte.classList.add('def-number-input', 'number-input', 'safari_only', 'row', 'col');
+      productDivCol.classList.add('col', 'row');//ICI div COL ROW
+      //Quantité
+      productTdQte.classList.add('row', 'col');
       productBtnQte.classList.add('btn', 'btn-outline-secondary', 'col', 'col-2');
       productBtnI.classList.add('bi', 'bi-plus');
-      productBtnIdeux.classList.add('bi', 'bi-dash', 'col', 'col-2');
       productInput.classList.add('form-control', 'w-25');
       productBtndeuxQte.classList.add('btn', 'btn-outline-secondary', 'col', 'col-2');
       productSelect.classList.add('form-select');
       //Bouton
       productDivBtn.classList.add('col', 'option', 'col-6', 'color');//Option
-      productBtnDeux.classList.add('btn','btn-secondary', 'btn-md', 'mr-1', 'mb-2');
+      productBtnDeux.classList.add('btn','btn-secondary', 'btn-md', 'mr-1', 'mb-2', 'espace');
 
       // Ajout d'attribut
       productImage.setAttribute('alt', 'Responsive image');
       productTd.setAttribute('data-th', "Quantity");
+      productBtn.setAttribute('type', 'button');
+      productBtn.setAttribute('id', 'btPlus');
+      productSpann.setAttribute('id', 'nb');
+      productBtndeux.setAttribute('type', 'button');
+      productBtndeux.setAttribute('id', 'btMoins');
+
       productBtnDeux.setAttribute('type', 'submit');
       productBtnDeux.setAttribute('name', 'btn-envoyer');
       productBtnQte.setAttribute('type', 'button');
@@ -154,19 +171,23 @@ async function displayProduct (article, position) {
       //Div Quantite
       productCardBody.appendChild(productQuantity);
       productQuantity.appendChild(productTable);
+      productQuantity.appendChild(productDivcontainer);
+      productDivcontainer.appendChild(productTableFisrt);
+      productTableFisrt.appendChild(productTbodyFirst);
+      productTbodyFirst.appendChild(productTrQte);
+      productTbodyFirst.appendChild(productDiv);
+      productDiv.appendChild(productBtn);
+      productDiv.appendChild(productSpann);
+      productDiv.appendChild(productBtndeux);
+
       productTable.appendChild(productTbody);
-      productTbody.appendChild(productTrUn);
       productTbody.appendChild(productTrDeux);
-      productTrUn.appendChild(productTd);
       productTable.appendChild(productDivCol);
-      productDivCol.appendChild(productQte);      
       //Bouton
       productDivCol.appendChild(productDivBtn);
       productQuantity.appendChild(productBtnDeux);
-      productQte.appendChild(productTdQte);
       productTdQte.appendChild(productBtnQte);
       productBtnQte.appendChild(productBtnI);
-      productBtndeuxQte.appendChild(productBtnIdeux);
       productTdQte.appendChild(productInput);
       productTdQte.appendChild(productBtndeuxQte);
       
@@ -181,16 +202,14 @@ async function displayProduct (article, position) {
       //Diviser les prix
       productPrice.innerHTML = article.price / 100 + ' €';
       productBtnDeux.innerHTML = `Ajouter au panier`;
-      productBtnI.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
-    </svg> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>`;
-    productBtnIdeux.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
-  </svg> <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>`;
 
       //Texte
-      productTrUn.innerHTML = `Quantité`;
-      productTrDeux.innerHTML =  `Lentilles`;
+      productTrQte.innerHTML = `Quantité:`;
+      productBtn.innerHTML = `+`;
+      productSpann.innerHTML = `0`;
+      productBtndeux.innerHTML = `-`;
+
+      productTrDeux.innerHTML =  `Lentilles:`;
 
       //Tant qu'il y a des lentilles, les éléments se creent
 
@@ -213,7 +232,6 @@ async function displayProduct (article, position) {
         ajoutPanier(article._id)  // Appel de la fonction ajoutPanier en indiquant que le parametre sera égal à l'id de l'article
         alert('Article ajouté au panier');
       }
-
     
     } //Fin de la boucle if
   }

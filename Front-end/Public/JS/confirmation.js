@@ -1,10 +1,12 @@
 
+confirmation()
+
+function confirmation() {
 const panier = [];
 
-let containerConfir = document.getElementById('Commande');
+try {
 
-//Récupération sessionStorage
-// let panier = object.keys(sessionStorage);
+let containerConfir = document.getElementById('Commande');
 
 for (i = 0 ; i < panier.length; i++); {
 
@@ -31,6 +33,8 @@ for (i = 0 ; i < panier.length; i++); {
     let longTrait = document.createElement('hr');
     let ulListe = document.createElement('ul');
     let liListe = document.createElement('li');
+    let divStronng = document.createElement('div');
+    let strongBaalise = document.createElement('strong');
     let spanPrice =  document.createElement('span');
     let liSecond = document.createElement('li');
     let spanFrais = document.createElement('span');
@@ -79,7 +83,9 @@ for (i = 0 ; i < panier.length; i++); {
     cardBody.appendChild(longTrait);
     cardBody.appendChild(ulListe);
     ulListe.appendChild(liListe);
-    liListe.appendChild(spanPrice);
+    liListe.appendChild(divStronng)
+    divStronng.appendChild(strongBaalise);
+    strongBaalise.appendChild(spanPrice);
     ulListe.appendChild(liSecond);
     liSecond.appendChild(spanFrais);
     ulListe.appendChild(liThird);
@@ -105,8 +111,16 @@ for (i = 0 ; i < panier.length; i++); {
 
    console.log(prixTotal);
 
-}//Fin for
+}
 
+}//Fin try
+
+catch (error) {
+    console.error(error);
+    alert('Le serveur ne répond pas, veuillez réessayer ultérieurement.');
+  };
+
+}
 
 
     

@@ -99,6 +99,24 @@ h2 {
     margin-top: 10px;
 }
 
+#nb {
+    width: 15%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #6c757d;
+    z-index: 0;
+    /* border-bottom: 1px solid #6c757d; */
+    padding-left: 0;
+    padding: .375rem .75rem;
+}
+
+.espace {
+    padding-bottom: 15px;
+    padding-top: 0;
+}
+
 /* Confirmation */
 .commande h1 {
     font-size: 1.8em;
@@ -174,5 +192,3 @@ h2 {
 .minuscule {
     text-transform: none;
 }
-
-
