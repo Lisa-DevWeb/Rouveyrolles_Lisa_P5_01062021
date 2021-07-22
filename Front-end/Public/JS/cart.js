@@ -107,7 +107,7 @@ try {
             paraQte.innerHTML = "Quantité(s) : " + panier[i].quantite;
 
 
-            //Ajout de la lentille dans une variable length, qui a pour valeur l'article et la value selectionnés
+            //Ajout de la lentille dans une variable length, qui a pour valeur l'article et la valeur sélectionnée
 
             for (let j=0; j < panier[i].lentille.length; j++){
 
@@ -163,12 +163,11 @@ function remove(position) {
 
     this.panier = JSON.parse(localStorage.getItem("panier")); //Récupération de l'élément dans le panier du LocalStorage
 
-    this.panier.splice(position,1); // Suppression du paramètre position qui correspond à i, 1 élément à supprimer
+    this.panier.splice(position,1); //Suppression du paramètre position qui correspond à i, 1 élément à supprimer
 
-    localStorage.setItem('panier', JSON.stringify(this.panier));// Réactualisation du panier sans l'élément supprimé
+    localStorage.setItem('panier', JSON.stringify(this.panier)); //Réactualisation du panier sans l'élément supprimé
 
-    window.location.reload();//Rechargement de la page adin d'actualiser le panier une fois l'élément supprimé
-
+    window.location.reload(); //Rechargement de la page afin d'actualiser le panier une fois l'élément supprimé
 }
 
 //Fonction de récupération de l'id des produits du panier
@@ -176,7 +175,7 @@ function idCart() {
 
     try {
 
-        sessionStorage.removeItem('products');//Les données enregistrées dans la sessionStorage expirent a la fin de la session de la navigation actuelle. Suppression de la ressource avec le nom de clé correspondant du storage.
+        sessionStorage.removeItem('products'); //Les données enregistrées dans la sessionStorage expirent a la fin de la session de la navigation actuelle. Suppression de la ressource avec le nom de clé correspondant du storage.
         this.panier = []; 
 
         //Si le localStorage du panier existe alors
@@ -187,7 +186,7 @@ function idCart() {
 
                 //Si la sessionStorage products existe alors
                 if (JSON.parse(sessionStorage.getItem('products'))) {
-                    var products = JSON.parse(sessionStorage.getItem('products'))
+                    var products = JSON.parse(sessionStorage.getItem('products')) //Analyse des données et conversion de products en objet Js
                 }
 
                 else {
@@ -248,7 +247,7 @@ myForm.addEventListener('submit', function (error) {
     var adresse = document.getElementById('formAdresse').value;
     var ville = document.getElementById('formVille').value;
 
-    //S'il y a une erreur avec ces conditions, annulation du comportement par défaut du bouton et afficahge du message de la var erreur
+    //S'il y a une erreur avec ces conditions, annulation du comportement par défaut du bouton et affichage du message de la var erreur
 
     if (number.test(ville) == true || specialCara.test(ville) ==true || mail.test(ville) == true || ville == ''){
         erreur = "* Veuillez renseigner une ville "
@@ -271,7 +270,7 @@ myForm.addEventListener('submit', function (error) {
         error.preventDefault()
     }
 
-    //Si la taille du panier est supérieure à 1, on annule le comportement par dédaut du bouton et on affiche le message de la var erreur
+    //Si la taille du panier est supérieure à 1, on annule le comportement par défaut du bouton et on affiche le message de la var erreur
   
     if (panier.length < 1) {
         error.preventDefault()
@@ -286,7 +285,7 @@ myForm.addEventListener('submit', function (error) {
     
     else {
 
-        // Sinon on crée un objet contact contenant les informations du client
+        //Sinon on crée un objet contact contenant les informations du client
         contact = {
         lastName : nom,
         firstName : prenom,
@@ -295,17 +294,17 @@ myForm.addEventListener('submit', function (error) {
         email : email
         };
 
-        // On crée le sessionStorage du contact
+        //On crée le sessionStorage du contact
         let getIt = JSON.parse(sessionStorage.getItem('contact'));
         getIt = [];
         alert('Formulaire envoyé !');
         console.log(contact);
 
-        // Ajout de l'objet product dans le sessionStorage et push dans le tableau product
+        //Ajout de l'objet product dans le sessionStorage et push dans le tableau product
         sessionStorage.setItem('contact', JSON.stringify(contact));
         getIt.push(contact);
 
-        // Création de la variable qui va récuperer l'id des produits du panier
+        //Création de la variable qui va récupérer l'id des produits du panier
         products = JSON.parse(sessionStorage.getItem('products'));
             
         // Via la methode fetch, on POST les données à l'API contenant le products (idProduit) et l'objet contact

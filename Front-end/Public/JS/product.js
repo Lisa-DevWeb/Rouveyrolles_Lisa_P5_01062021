@@ -9,8 +9,8 @@ const requestId = window.location.search; //Renvoie un objet Location contenant 
 const thisId = requestId.slice(1); //Sans modifier le tableau, renvoie une nouvelle copie des éléments du tableau
 console.log(thisId);
 
-//Recuperation des données API
-async function allProducts() { //En atttente de la function GetArticles - Seconde execution
+//Récupération des données API
+async function allProducts() { //En atttente de la function GetArticles - Seconde exécution
 
   //Await met en pause le code sur cette ligne, jusqu'à ce que la promesse se realise, puis retourne la valeur resultante
   const articles = await getArticles(); //En attente des objets de l'API
@@ -176,10 +176,10 @@ async function displayProduct (article, position) {
     productTdQte.appendChild(productInput);
     productTdQte.appendChild(productBtndeuxQte);
     
-    //Selection
+    //Sélection
     productDivBtn.appendChild(productSelect);
 
-    //Recuperation des données Api
+    //Récupération des données Api
     productFirstTitle.innerHTML = article.name;
     productImage.src = article.imageUrl;
     productDescription.innerHTML = article.description;
@@ -208,7 +208,7 @@ async function displayProduct (article, position) {
           //Définir l'attribut désactivé par défaut sur le bouton moins
           document.getElementById('btMoins').setAttribute("disabled", "disabled");
 
-          //Prendre la valeur pour incrémenter/décrémenter la valeur d'input
+          //Valeur pour incrémenter/décrémenter la valeur d'input
           var valueCount 
 
           //Bouton plus
@@ -220,10 +220,10 @@ async function displayProduct (article, position) {
               //Incrémenter de 1 la valeur input 
               valueCount++;
 
-              //Setting increment input value
+              //Réglage de la valeur incrémenté
               document.getElementById('quantity').value = valueCount;
 
-              if (valueCount > 1) {
+              if (valueCount > 1) { //Si la valeur est inférieure à 1, le bouton Moins est désactivité
                 document.getElementById('btMoins').removeAttribute("disabled");
                 document.getElementById('btMoins').classList.remove("disabled");
               }
@@ -237,28 +237,28 @@ async function displayProduct (article, position) {
           //Bouton moins
           document.getElementById('btMoins').addEventListener('click', function () {
 
-            //getting value of input
+            //Obtention de la valeur input
             valueCount = document.getElementById('quantity').value;
 
-            //input value increment by 1
+            //Décrémenter de 1 la valeur input
             valueCount--;
 
-            //Setting increment input value
+            //Réglage de la valeur décrémenté
             document.getElementById('quantity').value = valueCount;
 
-            if (valueCount == 1) {
+            if (valueCount == 1) { //Si la valeur est égale à 1, le bouton moins est désactivé
               document.getElementById('btMoins').setAttribute("disabled", "disabled")
             }
 
             sessionStorage.setItem('quantity', valueCount)
             console.log(sessionStorage.getItem('quantity'))
 
-        })
+        });
 
       //Lors du clic
       document.getElementById('butn').onclick = function() {
 
-        ajoutPanier(article._id)  // Appel de la fonction ajoutPanier, en indiquant que le paramètre sera égal à l'id de l'article
+        ajoutPanier(article._id)  //Appel de la fonction ajoutPanier, en indiquant que le paramètre sera égal à l'id de l'article
         alert('Article ajouté au panier');
       }
  
@@ -280,7 +280,7 @@ async function displayProduct (article, position) {
 
         //Si le localSotage contient un article       
         if (localStorage.getItem('panier') != null) {
-          this.panier = JSON.parse(localStorage.getItem("panier")) // On recupère le panier du localStorage qu'on va créer plus tard
+          this.panier = JSON.parse(localStorage.getItem("panier")) // On recupère le panier du localStorage qu'on va créer plus tard. Conversion de la chaîne Json en un objet JavaScript
         }
 
         //Si le localStorage est vide, on indique que le panier est un tableau
@@ -296,7 +296,8 @@ async function displayProduct (article, position) {
 
               if (this.panier[i]._id === id) { //Si l'id du produit ajouté au panier correspond à l'id de l'article choisi
            
-              this.panier[i].quantite += Number(sessionStorage.getItem('quantity'))
+              this.panier[i].quantite += Number(sessionStorage.getItem('quantity')) //Renvoie la valeur stockée
+
               this.panier[i].lentille.push(document.getElementById('select').value); //push la valeur de lentille
 
               console.log('Panier: ', this.panier);
@@ -321,11 +322,12 @@ async function displayProduct (article, position) {
           } 
           
           else {
-            this.panier[position-1]['quantite'] = Number(sessionStorage.getItem('quantity'))
+            this.panier[position-1]['quantite'] = Number(sessionStorage.getItem('quantity')) //la variable quantite équivaut à 0
+
             console.log(Number(sessionStorage.getItem('quantity')));
           }
 
-          sessionStorage.removeItem('quantity') //Suppression du nombre de quantité           
+          sessionStorage.removeItem('quantity') //Suppression du nombre de quantité dans le sessionStorage          
 
           this.panier[position-1]['lentille'] = [document.getElementById('select').value]; //Récupération de la valeur de la balise select
 
@@ -340,7 +342,7 @@ async function displayProduct (article, position) {
         alert('Votre choix n\'a pas pu être enregistré, veuillez réessayer ultérieurement.');
       };
 
-    } //Fin de la function
+    } //Fin de la function ajoutPanier
 
 }; //Fin fonction displayProduct
 
