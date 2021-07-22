@@ -53,13 +53,6 @@ async function displayProduct (article, position) {
     //Element parent
     const container = document.getElementById("container-produits");
 
-    //Creation des éléments enfants de container, liste des produits
-    let productList = document.createElement('div');
-    productList.setAttribute("class", "list-product");
-
-    //Relier l'élément à son parent
-    container.appendChild(productList);
-
     //Création des éléments de la liste
     let productContainer = document.createElement('div');
     let productDivImg = document.createElement('div');
@@ -99,7 +92,7 @@ async function displayProduct (article, position) {
     let productBtnDeux = document.createElement('button');
   
     //Ajout de class
-    productContainer.classList.add('row', 'justify-content-center', 'container-fluid');
+    productContainer.classList.add('row', 'justify-content-center', 'align-items-center', 'container-fluid');
     productDivImg.classList.add('col-sm-4', 'prod');
     productImage.classList.add('img-fluid');
     productColCinq.classList.add('col-sm-5', 'card', 'espace', 'm-3');

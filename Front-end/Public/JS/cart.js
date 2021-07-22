@@ -38,7 +38,7 @@ try {
             let containerImg = document.createElement('div');
             let divImg = document.createElement('img');
             let divRecap = document.createElement('div');
-            let titleDeux = document.createElement('h2');
+            let titleDeux = document.createElement('h1');
             let divColRow = document.createElement('div');
             let paraQte = document.createElement('p');
             let paraPrix = document.createElement('p');
@@ -54,7 +54,7 @@ try {
             divCol.classList.add('col');
             divCardBody.classList.add('row', 'quatre', 'card-body');
             divColsm.classList.add('col', 'blue', 'col-sm-5');
-            containerImg.classList.add('image', 'container-fluid', 'justify-content-center', 'row');
+            containerImg.classList.add('image', 'container-fluid', 'justify-content-center', 'align-items-center', 'row');
             divImg.classList.add('img-fluid');
             divRecap.classList.add('col', 'col-sm-5', 'titreh');
             divColRow.classList.add('col');
@@ -63,6 +63,7 @@ try {
             lienRemove.classList.add('card-link-secondary', 'small', 'text-uppercase', 'mr-3');
             iCone.classList.add('fas', 'fa-trash-alt', 'mr-1', 'minuscule');
             trait.classList.add('mb-4', 'm-3');
+            titleDeux.classList.add('little');
 
             //Ajout d'attribut
             divRow.setAttribute('id', 'panier');

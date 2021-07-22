@@ -48,11 +48,13 @@ for (i = 0 ; i < panier.length; i++); {
 
     //Ajout class
     grandContainer.classList.add('container-fluid', 'row');
+    secondTitle.classList.add('titresecond');
+    thirdTitle.classList.add('titresecond')
     colCom.classList.add('col', 'center', 'commande');
     divMssge.classList.add('row', 'justify-content-center');
-    mssgeDiv.classList.add('col-4', 'pink');
+    mssgeDiv.classList.add('col-9', 'pink');
     divMerci.classList.add('merci');
-    colQuatre.classList.add('col-4', 'vert', 'card', 'm-3');
+    colQuatre.classList.add('col-7', 'vert', 'card', 'm-3');
     cardBody.classList.add('card-body');
     paraRecap.classList.add('recap');
     longTrait.classList.add('mb-2');

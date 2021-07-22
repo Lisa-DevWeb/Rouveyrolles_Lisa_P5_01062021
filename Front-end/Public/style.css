@@ -1,3 +1,4 @@
+/* index */
 body {
     margin: 0;
 }
@@ -21,12 +22,64 @@ body {
     text-align: center;
 }
 
+h1, .card h2, .violet {
+    color: rgb(151, 25, 151);
+}
+
+h2 {
+    color: grey;
+}
+
 header, .rose {
     background-color: rgb(243, 233, 241);
 }
 
 .panier {
     background-color: hotpink;
+}
+
+#row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nom {
+    font-size: 1.8em;
+    margin-top: 10px;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.big {
+    font-size: 1.3em;
+}
+
+#image {
+   object-fit: cover;
+   width: auto;
+   height: 200px;
+}
+
+.taille {
+    text-align: center;
+}
+
+.titre {
+    padding: 10px;
+}
+
+.minuscule {
+    text-transform: none;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+ul li p {
+    margin-bottom: 0;
 }
 
 footer {
@@ -56,13 +109,30 @@ nav ul li a {
     font-size: 1.3em;
 }
 
-.center h1, h2 {
+.center h1 {
     text-align: center;
     padding: 5px;
 }
 
+.little {
+    font-size: 1.2em;
+}
+
 .titreh h2 {
     text-align: initial;
+}
+
+.normal {
+    font-weight: initial;
+    font-size: 1.2em;
+}
+
+.petit {
+    font-size: 1em;
+}
+
+.size {
+    font-size: 1.3em;
 }
 
 /* Bouton */
@@ -75,18 +145,8 @@ nav ul li a {
     color: white;
 }
 
-
 button .fa-info-circle, .fa-shopping-cart {
     padding-right: 7px;
-}
-
-/* h3 Accueil */
-h1, .card h2, .violet {
-    color: rgb(151, 25, 151);
-}
-
-h2 {
-    color: grey;
 }
 
 /* Redirection accueil */
@@ -149,58 +209,7 @@ h2 {
     font-weight: bold;
 }
 
-/* Index */
-#row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.nom {
-    font-size: 1.8em;
-}
-
-.optionn {
-    background-color: orange;
-}
-
-.strong {
-    font-weight: bold;
-}
-
-.select {
-    background-color: paleturquoise;
-}
-
-.big {
-    font-size: 1.3em;
-}
-
-#image {
-   object-fit: cover;
-   width: auto;
-   height: 200px;
-}
-
-.taille {
-    text-align: center;
-}
-
-.titre {
-    padding: 10px;
-}
-
-.minuscule {
-    text-transform: none;
-}
-
-.bold {
-    font-weight: bold;
-}
-
-ul li p {
-    margin-bottom: 0;
-}
-
+/* Compteur */
 #btMoins, #btPlus {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
@@ -213,4 +222,11 @@ ul li p {
     border-bottom: 1px solid #565e64; 
     text-align: center;
     width: 100px;
+}
+
+/* confirmation */
+.titresecond {
+    background-color: khaki;
+    text-align: center;
+    width: 100%;
 }

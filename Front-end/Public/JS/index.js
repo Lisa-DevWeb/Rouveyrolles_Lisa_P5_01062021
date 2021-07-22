@@ -46,7 +46,6 @@ function displayProduct(article, position) {
   let productImg = document.createElement('img');
   let productCardBody = document.createElement('div');
   let productlinkProduct = document.createElement('a');
-  let productTitleTrois = document.createElement('h3');
   let productDescrip = document.createElement('p');
   let productPrice = document.createElement('p');
   let productLinkButton = document.createElement('a');
@@ -76,7 +75,6 @@ function displayProduct(article, position) {
   productLinkImg.appendChild(productImg);
   productCard.appendChild(productCardBody);
   productCardBody.appendChild(productlinkProduct);
-  productlinkProduct.appendChild(productTitleTrois);
   productlinkProduct.appendChild(productDescrip);
   productlinkProduct.appendChild(productPrice);
   productCardBody.appendChild(productLinkButton);
