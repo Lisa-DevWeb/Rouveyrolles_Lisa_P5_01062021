@@ -81,7 +81,7 @@ button .fa-info-circle, .fa-shopping-cart {
 }
 
 /* h3 Accueil */
-h1, .card h2 {
+h1, .card h2, .violet {
     color: rgb(151, 25, 151);
 }
 
@@ -191,4 +191,26 @@ h2 {
 
 .minuscule {
     text-transform: none;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+ul li p {
+    margin-bottom: 0;
+}
+
+#btMoins, #btPlus {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-left-radius:2px;
+    border-bottom-right-radius: 2px;  
+}
+
+#quantity {
+    border-top: 1px solid #565e64;
+    border-bottom: 1px solid #565e64; 
+    text-align: center;
+    width: 100px;
 }

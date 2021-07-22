@@ -33,10 +33,12 @@ for (i = 0 ; i < panier.length; i++); {
     let longTrait = document.createElement('hr');
     let ulListe = document.createElement('ul');
     let liListe = document.createElement('li');
+    let paraListe = document.createElement('p');
     let divStronng = document.createElement('div');
     let strongBaalise = document.createElement('strong');
     let spanPrice =  document.createElement('span');
     let liSecond = document.createElement('li');
+    let paraFrais = document.createElement('p');
     let spanFrais = document.createElement('span');
     let liThird = document.createElement('li');
     let divStrong = document.createElement('div');
@@ -50,7 +52,7 @@ for (i = 0 ; i < panier.length; i++); {
     divMssge.classList.add('row', 'justify-content-center');
     mssgeDiv.classList.add('col-4', 'pink');
     divMerci.classList.add('merci');
-    colQuatre.classList.add('col-4', 'vert', 'card');
+    colQuatre.classList.add('col-4', 'vert', 'card', 'm-3');
     cardBody.classList.add('card-body');
     paraRecap.classList.add('recap');
     longTrait.classList.add('mb-2');
@@ -58,6 +60,9 @@ for (i = 0 ; i < panier.length; i++); {
     liListe.classList.add('list-group-item', 'd-flex','justify-content-between', 'align-items-center', 'border-0','px-0', 'pb-0');
     liSecond.classList.add('list-group-item', 'd-flex','justify-content-between', 'align-items-center', 'px-0');
     liThird.classList.add('list-group-item', 'd-flex','justify-content-between', 'align-items-center', 'border-0', 'px-0', 'mb-1');
+    spanPrice.classList.add('bold');
+    priceSpan.classList.add('bold');
+    idProduct.classList.add('bold', 'violet');
 
     //Ajout d'attribut
     idProduct.setAttribute('id', 'idProduit');
@@ -83,10 +88,12 @@ for (i = 0 ; i < panier.length; i++); {
     cardBody.appendChild(longTrait);
     cardBody.appendChild(ulListe);
     ulListe.appendChild(liListe);
+    liListe.appendChild( paraListe);
     liListe.appendChild(divStronng)
     divStronng.appendChild(strongBaalise);
     strongBaalise.appendChild(spanPrice);
     ulListe.appendChild(liSecond);
+    liSecond.appendChild(paraFrais);
     liSecond.appendChild(spanFrais);
     ulListe.appendChild(liThird);
     liThird.appendChild(divStrong);
@@ -100,10 +107,10 @@ for (i = 0 ; i < panier.length; i++); {
     thirdTitle.innerHTML = `Nous vous remercions de votre confiance.`;
     paraMsge.innerHTML = `Nous vous tiendrons informé par e-mail lorsque les articles de votre commande auront été expédiés. <br> À très bientot ! `;
     paraRecap.innerHTML = `Récapitulatif de votre commande`;
-    paraNumber.innerHTML = `Numéro de commande :`;
+    paraNumber.innerHTML = `Voici votre numéro de commande, notez-le bien : `;
     idProduct.innerHTML =  `${panier.orderId}`;
-    liListe.innerHTML = `Montant total`;
-    liSecond.innerHTML =  `Frais de port`;
+    paraListe.innerHTML = `Montant total`;
+    paraFrais.innerHTML =  `Frais de port`;
     spanFrais.innerHTML =  `Gratuit`;
     strongBalise.innerHTML = `Total TTC payé`;
     priceSpan.innerHTML = prixTotal + ' €';
@@ -122,5 +129,6 @@ catch (error) {
 
 }
 
+localStorage.clear() //Remise à zéro du panier après achat
 
     
