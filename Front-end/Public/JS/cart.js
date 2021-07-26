@@ -180,40 +180,40 @@ function idCart() {
 
         //Si le localStorage du panier existe alors
 
-                if (localStorage.getItem('panier')) { //Si le localStorage du panier possède un élément, on récupère le panier dans le localStaorage s'il existe
-                    this.panier = JSON.parse(localStorage.getItem("panier"));  //Conversion du format JSON au JS. Utilisation de localStorage.getItem afin de récupérer l'élément(panier) du stockage local
+        if (localStorage.getItem('panier')) { //Si le localStorage du panier possède un élément, on récupère le panier dans le localStaorage s'il existe
+            this.panier = JSON.parse(localStorage.getItem("panier"));  //Conversion du format JSON au JS. Utilisation de localStorage.getItem afin de récupérer l'élément(panier) du stockage local
+        }
+
+        //Si la sessionStorage products existe alors
+        if (JSON.parse(sessionStorage.getItem('products'))) {
+            var products = JSON.parse(sessionStorage.getItem('products')) //Analyse des données et conversion de products en objet Js
+        }
+
+        else {
+            products = []; //Sinon on initialise le tableau
+        }
+
+            //Récupération de l'id grâce à une boucle for
+            for (h = 0; h < this.panier.length; h++) {
+                
+                console.log(this.panier[h]._id)
+                var idProdu = this.panier[h]._id
+
+                //Si l'id existe alors on push
+
+                if (idProdu != null) {
+                    products.push(idProdu)
+                    sessionStorage.setItem('products', JSON.stringify(products))
                 }
 
-                //Si la sessionStorage products existe alors
-                if (JSON.parse(sessionStorage.getItem('products'))) {
-                    var products = JSON.parse(sessionStorage.getItem('products')) //Analyse des données et conversion de products en objet Js
-                }
+                //Sinon on initialise le tableau
 
                 else {
-                    products = []; //Sinon on initialise le tableau
+                    idProdu = [];
+                    products.push(idProdu)
+                    sessionStorage.setItem('products', JSON.stringify(products))
                 }
-
-                    //Récupération de l'id grâce à une boucle for
-                    for (h = 0; h < this.panier.length; h++) {
-                        
-                        console.log(this.panier[h]._id)
-                        var idProdu = this.panier[h]._id
-
-                        //Si l'id existe alors on push
-
-                        if (idProdu != null) {
-                            products.push(idProdu)
-                            sessionStorage.setItem('products', JSON.stringify(products))
-                        }
-
-                        //Sinon on initialise le tableau
-
-                        else {
-                            idProdu = [];
-                            products.push(idProdu)
-                            sessionStorage.setItem('products', JSON.stringify(products))
-                        }
-                    }
+            }
     }
 
     catch (error) {
