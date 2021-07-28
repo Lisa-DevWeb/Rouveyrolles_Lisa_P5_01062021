@@ -16,10 +16,7 @@ try {
         panier = JSON.parse(localStorage.getItem("panier"));
     }
 
-    console.log(panier);
-
     //Si le panier est vide
-
     if (panier.length >= 1) {
 
         localStorage.getItem('panier', JSON.stringify(panier)); //Ajout de l'élément à l'intérieur du stockage local et conversion de la valeur Javascript en chaîne JSON
@@ -110,7 +107,6 @@ try {
             //Ajout de la lentille dans une variable length, qui a pour valeur l'article et la valeur sélectionnée
 
             for (let j=0; j < panier[i].lentille.length; j++){
-
                 paraLentille.append(panier[i].lentille[j] + ' ' + ' | ' ) ; 
             }
 
@@ -127,8 +123,6 @@ try {
 
             sessionStorage.setItem('prixTotal', JSON.stringify(prixTotal));
              
-            console.log(prixTotal)
-
             document.getElementById('price').innerHTML = prixTotal + ' €';
             document.getElementById('price_prix').innerHTML = prixTotal + ' €';
  
@@ -138,9 +132,6 @@ try {
 
     else {
             //Sinon afficher un message indiquant un panier vide
-            console.log(panier)
-            console.log('Le panier est vide')
-
             let firstSection = document.getElementById('title');
             let titleCamera = document.createElement('div');
             titleCamera.classList.add('titre', 'col', 'col-12', 'nom');
@@ -179,7 +170,6 @@ function idCart() {
         this.panier = []; 
 
         //Si le localStorage du panier existe alors
-
         if (localStorage.getItem('panier')) { //Si le localStorage du panier possède un élément, on récupère le panier dans le localStaorage s'il existe
             this.panier = JSON.parse(localStorage.getItem("panier"));  //Conversion du format JSON au JS. Utilisation de localStorage.getItem afin de récupérer l'élément(panier) du stockage local
         }
@@ -223,7 +213,7 @@ function idCart() {
 
 };//Fin de la fonction IdCart
 
-idCart() //Appel de la fonction
+    idCart() //Appel de la fonction
 
 //Au clic sur le formulaire    
 let myForm = document.getElementById('myForm');
@@ -298,7 +288,6 @@ myForm.addEventListener('submit', function (error) {
         let getIt = JSON.parse(sessionStorage.getItem('contact'));
         getIt = [];
         alert('Formulaire envoyé !');
-        console.log(contact);
 
         //Ajout de l'objet product dans le sessionStorage et push dans le tableau product
         sessionStorage.setItem('contact', JSON.stringify(contact));

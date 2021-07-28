@@ -14,7 +14,6 @@ async function allProducts() {
 
     displayProduct(articles[i], i) //Appel de la fonction avec les paramètres souhaités
 
-    console.log(article);
   }
 };
 

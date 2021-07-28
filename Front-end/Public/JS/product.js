@@ -7,7 +7,6 @@ const article = [];
 
 const requestId = window.location.search; //Renvoie un objet Location contenant des informations concernant l'URL actuelle du doc. La propriété search permet l'accès aux url avec les differents id(chaînes de caractères)
 const thisId = requestId.slice(1); //Sans modifier le tableau, renvoie une nouvelle copie des éléments du tableau
-console.log(thisId);
 
 //Récupération des données API
 async function allProducts() { //En atttente de la function GetArticles - Seconde exécution
@@ -19,7 +18,6 @@ async function allProducts() { //En atttente de la function GetArticles - Second
 
     article.push(articles[i]); //On push chaque article un par un dans le tableau
     displayProduct(articles[i], i); //Appel de la fonction avec les paramètres souhaités
-    console.log(article);
   }
 };
 
@@ -101,7 +99,7 @@ async function displayProduct (article, position) {
     productPrice.classList.add('blue', 'strong', 'big');
     productSpan.classList.add('mr-1');
     productDescription.classList.add('pt-1');
-    //Div Quantite
+    //Quantité
     productQuantity.classList.add('col', 'quantite', 'container-fluid');
     productDivcontainer.classList.add('contain', 'col', 'row');
     productTableFisrt.classList.add('containe', 'row', 'd-flex', 'flex-row');
@@ -112,7 +110,6 @@ async function displayProduct (article, position) {
     productTbody.classList.add('qte', 'col', 'row');
     productTrDeux.classList.add('col', 'col-6');
     productDivCol.classList.add('col', 'row');
-    //Quantité
     productTdQte.classList.add('row', 'col');
     productBtnQte.classList.add('btn', 'btn-outline-secondary', 'col', 'col-2');
     productBtnI.classList.add('bi', 'bi-plus');
@@ -154,7 +151,7 @@ async function displayProduct (article, position) {
     productCardBody.appendChild(productPrice);
     productPrice.appendChild(productSpan);
     productCardBody.appendChild(productDescription);
-    //Div Quantite
+    //Quantité
     productCardBody.appendChild(productQuantity);
     productQuantity.appendChild(productTable);
     productQuantity.appendChild(productDivcontainer);
@@ -199,8 +196,6 @@ async function displayProduct (article, position) {
         select.appendChild(option);
 
         document.getElementById('option'+i).innerHTML = article.lenses[i];
-
-        console.log(article.lenses.length);//Nombre de lentilles/options     
       }
 
       //Compteur
@@ -229,10 +224,7 @@ async function displayProduct (article, position) {
               }
 
               sessionStorage.setItem('quantity', valueCount)
-              console.log(sessionStorage.getItem('quantity'))
           })
-
-          console.log(sessionStorage.getItem('quantity')) 
 
           //Bouton moins
           document.getElementById('btMoins').addEventListener('click', function () {
@@ -251,16 +243,14 @@ async function displayProduct (article, position) {
             }
 
             sessionStorage.setItem('quantity', valueCount)
-            console.log(sessionStorage.getItem('quantity'))
-
         });
 
-      //Lors du clic
-      document.getElementById('butn').onclick = function() {
+          //Lors du clic
+          document.getElementById('butn').onclick = function() {
 
-        ajoutPanier(article._id)  //Appel de la fonction ajoutPanier, en indiquant que le paramètre sera égal à l'id de l'article
-        alert('Article ajouté au panier');
-      }
+            ajoutPanier(article._id)  //Appel de la fonction ajoutPanier, en indiquant que le paramètre sera égal à l'id de l'article
+            alert('Article ajouté au panier');
+          }
  
     } //Fin de la boucle if
 
@@ -272,77 +262,69 @@ async function displayProduct (article, position) {
   };
 
 //Fonction ajout au panier, avec en paramètre l'id du produit
-    function ajoutPanier(id) {
+  function ajoutPanier(id) {
 
-      try {
+    try {
 
-        console.log(id);
+      //Si le localSotage contient un article       
+      if (localStorage.getItem('panier') != null) {
+        this.panier = JSON.parse(localStorage.getItem("panier")) // On recupère le panier du localStorage qu'on va créer plus tard. Conversion de la chaîne Json en un objet JavaScript
+      }
 
-        //Si le localSotage contient un article       
-        if (localStorage.getItem('panier') != null) {
-          this.panier = JSON.parse(localStorage.getItem("panier")) // On recupère le panier du localStorage qu'on va créer plus tard. Conversion de la chaîne Json en un objet JavaScript
-        }
+      //Si le localStorage est vide, on indique que le panier est un tableau
+      else {
+        this.panier = [];
+      }
 
-        //Si le localStorage est vide, on indique que le panier est un tableau
-        else {
-          this.panier = [];
-        }
+      for (let i = 0; i < this.panier.length; i++) //Tant que le panier contient des articles
+      {
+  
+          //Si un élément existe déjà dans le panier alors
+          if (this.panier[i] != null) { //Si le panier contient des articles
 
-        for (let i = 0; i < this.panier.length; i++) //Tant que le panier contient des articles
-        {
-     
-            //Si un élément existe déjà dans le panier alors
-            if (this.panier[i] != null) { //Si le panier contient des articles
+            if (this.panier[i]._id === id) { //Si l'id du produit ajouté au panier correspond à l'id de l'article choisi
+        
+            this.panier[i].quantite += Number(sessionStorage.getItem('quantity')) //Renvoie la valeur stockée
 
-              if (this.panier[i]._id === id) { //Si l'id du produit ajouté au panier correspond à l'id de l'article choisi
-           
-              this.panier[i].quantite += Number(sessionStorage.getItem('quantity')) //Renvoie la valeur stockée
+            this.panier[i].lentille.push(document.getElementById('select').value); //push la valeur de lentille
 
-              this.panier[i].lentille.push(document.getElementById('select').value); //push la valeur de lentille
+            localStorage.setItem('panier', JSON.stringify(this.panier)); //Ajout d'un élément à l'intérieur du stockage local et conversion de la valeur Javascript en chaîne JSON
 
-              console.log('Panier: ', this.panier);
+            sessionStorage.removeItem('quantity')  
 
-              localStorage.setItem('panier', JSON.stringify(this.panier)); //Ajout d'un élément à l'intérieur du stockage local et conversion de la valeur Javascript en chaîne JSON
-
-              sessionStorage.removeItem('quantity')  
-
-              return; //L'instruction return met fin à l'exécution d'une fonction et définit une valeur à renvoyer à la fonction appelante
-
-              }
+            return; //L'instruction return met fin à l'exécution d'une fonction et définit une valeur à renvoyer à la fonction appelante
 
             }
 
-        } //Fin de la boucle for
-
-        //Sinon initialiser les variables quantité et lentilles
-        var position = this.panier.push(article); //Position correspond à l'article ajouté au panier
-
-          if (sessionStorage.getItem('quantity') == null ) { //Si la quantité est égale à null
-            this.panier[position-1]['quantite'] = 1; //Création d'une nouvelle variable à l'intérieur de l'article (description, name, price + création d'une variable quantite),
-          } 
-          
-          else {
-            this.panier[position-1]['quantite'] = Number(sessionStorage.getItem('quantity')) //la variable quantite équivaut à 0
-
-            console.log(Number(sessionStorage.getItem('quantity')));
           }
 
-          sessionStorage.removeItem('quantity') //Suppression du nombre de quantité dans le sessionStorage          
+      }
 
-          this.panier[position-1]['lentille'] = [document.getElementById('select').value]; //Récupération de la valeur de la balise select
+      //Sinon initialiser les variables quantité et lentilles
+      var position = this.panier.push(article); //Position correspond à l'article ajouté au panier
 
-        console.log('Push : ',position-1);
-        console.log('Panier : ', this.panier);
+        if (sessionStorage.getItem('quantity') == null ) { //Si la quantité est égale à null
+          this.panier[position-1]['quantite'] = 1; //Création d'une nouvelle variable à l'intérieur de l'article (description, name, price + création d'une variable quantite),
+        } 
+        
+        else {
+          this.panier[position-1]['quantite'] = Number(sessionStorage.getItem('quantity')) //la variable quantite équivaut à 0
+        }
+
+        sessionStorage.removeItem('quantity') //Suppression du nombre de quantité dans le sessionStorage          
+
+        this.panier[position-1]['lentille'] = [document.getElementById('select').value]; //Récupération de la valeur de la balise select
+
         localStorage.setItem('panier', JSON.stringify(this.panier));
 
-      } //Fin try
+    } //Fin try
 
-      catch (error) {
-        console.error(error);
-        alert('Votre choix n\'a pas pu être enregistré, veuillez réessayer ultérieurement.');
-      };
+    catch (error) {
+      console.error(error);
+      alert('Votre choix n\'a pas pu être enregistré, veuillez réessayer ultérieurement.');
+    };
 
-    } //Fin de la function ajoutPanier
+  } //Fin de la function ajoutPanier
 
 }; //Fin fonction displayProduct
 
